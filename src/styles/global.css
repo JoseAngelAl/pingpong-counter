@@ -27,7 +27,36 @@ html {
 
 body {
   font-family: var(--font);
-  background: #D2A679;
+  background-color: #D2A679;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55));
+  background-size:
+    5px 2.57vh,
+    3px 53.85vh,
+    72.75vw 5px,
+    97vw 5px,
+    5px 100vh,
+    5px 100vh,
+    5px 100vh,
+    5px 100vh;
+  background-position:
+    center 0px,
+    center 46.15vh,
+    center calc(46.15vh - 2.5px),
+    center 0px,
+    calc(50% - 48.5vw) 0px,
+    calc(50% + 48.5vw) 0px,
+    calc(50% - 36.375vw) 0px,
+    calc(50% + 36.375vw) 0px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
   display: flex;
