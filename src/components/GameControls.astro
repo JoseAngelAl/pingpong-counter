@@ -1,0 +1,74 @@
+---
+---
+
+<div class="controls">
+  <button class="btn btn-undo" id="undoBtn" title="Deshacer último punto">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="1 4 1 10 7 10"/>
+      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+    </svg>
+    Deshacer
+  </button>
+
+  <button class="btn btn-reset" id="resetBtn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="23 4 23 10 17 10"/>
+      <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+    </svg>
+    Reiniciar
+  </button>
+
+  <button class="btn btn-reset-all" id="resetAllBtn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6h18"/>
+      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+      <line x1="10" y1="11" x2="10" y2="17"/>
+      <line x1="14" y1="11" x2="14" y2="17"/>
+    </svg>
+    Reset Todo
+  </button>
+</div>
+
+<style>
+  .controls {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--text);
+    border: 2px solid var(--gray-light);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--gray-light);
+    border-color: var(--gray);
+  }
+
+  .btn svg {
+    flex-shrink: 0;
+  }
+
+  .btn-reset-all {
+    color: var(--brown);
+    border-color: var(--gray-light);
+  }
+
+  .btn-reset-all:hover {
+    background: #FDE8E0;
+    border-color: var(--clay-light);
+  }
+</style>

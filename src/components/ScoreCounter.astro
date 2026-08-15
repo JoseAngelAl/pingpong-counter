@@ -1,0 +1,126 @@
+---
+import PlayerScore from './PlayerScore.astro';
+import GameControls from './GameControls.astro';
+---
+
+<div class="score-counter">
+  <header class="header">
+    <div class="header-icon">🎾</div>
+    <h1 class="header-title">PING PONG</h1>
+    <p class="header-sub">CHIRINGUITO DEL YAYO</p>
+  </header>
+
+  <div class="players" id="playersContainer">
+    <PlayerScore
+      playerIndex={0}
+      name="Jugador 1"
+      score={0}
+      isActive={true}
+      isWinner={false}
+      sets={0}
+    />
+    <div class="vs">VS</div>
+    <PlayerScore
+      playerIndex={1}
+      name="Jugador 2"
+      score={0}
+      isActive={false}
+      isWinner={false}
+      sets={0}
+    />
+  </div>
+
+  <div id="gameMessage" class="game-message">Turno de Jugador 1</div>
+
+  <GameControls />
+
+  <div id="matchHistoryContainer" class="match-history-wrapper"></div>
+</div>
+
+<style>
+  .score-counter {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-icon {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .header-title {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: var(--clay);
+    line-height: 1.2;
+  }
+
+  .header-sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .players {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .vs {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .game-message {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-height: 1.5rem;
+    padding: 0.25rem 0;
+  }
+
+  .game-message.winner {
+    color: var(--green);
+    font-size: 1.15rem;
+  }
+
+  .match-history-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .players {
+      flex-direction: column;
+    }
+
+    .vs {
+      display: none;
+    }
+
+    .player-card {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .header-title {
+      font-size: 1.3rem;
+    }
+  }
+</style>

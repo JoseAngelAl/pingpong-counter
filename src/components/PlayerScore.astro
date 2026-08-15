@@ -1,0 +1,158 @@
+---
+export interface Props {
+  playerIndex: number;
+  name: string;
+  score: number;
+  isActive: boolean;
+  isWinner: boolean;
+  sets: number;
+}
+
+const { playerIndex, name, score, isActive, isWinner, sets } = Astro.props;
+const side = playerIndex === 0 ? 'left' : 'right';
+---
+
+<div class="player-card" data-active={isActive} data-winner={isWinner}>
+  <div class="player-header">
+    <input
+      class="player-name"
+      type="text"
+      value={name}
+      data-player={playerIndex}
+      maxlength="20"
+      aria-label="Nombre del jugador"
+    />
+    <span class="sets-badge">{sets}</span>
+  </div>
+
+  <div class="score-number">{score}</div>
+
+  <div class="serve-indicator" data-active={isActive}>
+    {isActive ? '◉ SACA' : '○'}
+  </div>
+
+  <button
+    class="btn-point"
+    data-player={playerIndex}
+    disabled={!isActive}
+  >
+    +1 Punto
+  </button>
+</div>
+
+<style>
+  .player-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    flex: 1;
+    max-width: 280px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+    border: 2px solid var(--gray-light);
+  }
+
+  .player-card[data-active="true"] {
+    border-color: var(--clay);
+    box-shadow: 0 4px 16px rgba(211, 82, 32, 0.15);
+  }
+
+  .player-card[data-winner="true"] {
+    border-color: var(--green);
+    background: #F0F7F0;
+    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.2);
+  }
+
+  .player-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .player-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+    padding: 0.2rem 0.4rem;
+    width: 140px;
+    transition: border-color 0.2s;
+  }
+
+  .player-name:hover {
+    border-bottom-color: var(--gray-light);
+  }
+
+  .player-name:focus {
+    border-bottom-color: var(--clay);
+  }
+
+  .sets-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clay);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  .score-number {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text);
+    margin: 0.5rem 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .serve-indicator {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    min-height: 1.3rem;
+  }
+
+  .serve-indicator[data-active="true"] {
+    color: var(--clay);
+  }
+
+  .btn-point {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    background: var(--gray-light);
+    color: var(--text-muted);
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+  }
+
+  .btn-point:not(:disabled) {
+    background: var(--clay);
+    color: var(--white);
+  }
+
+  .btn-point:not(:disabled):hover {
+    background: var(--clay-light);
+  }
+
+  .btn-point:not(:disabled):active {
+    transform: scale(0.97);
+  }
+
+  .btn-point:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+</style>

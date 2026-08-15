@@ -1,0 +1,76 @@
+---
+export interface Props {
+  name1: string;
+  name2: string;
+  sets1: number;
+  sets2: number;
+}
+
+const { name1, name2, sets1, sets2 } = Astro.props;
+---
+
+<div class="match-history">
+  <span class="match-label">Sets</span>
+  <div class="match-scores">
+    <span class="match-name">{name1}</span>
+    <span class="match-value" data-winner={sets1 > sets2}>{sets1}</span>
+    <span class="match-separator">—</span>
+    <span class="match-value" data-winner={sets2 > sets1}>{sets2}</span>
+    <span class="match-name">{name2}</span>
+  </div>
+</div>
+
+<style>
+  .match-history {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--gray-light);
+    font-size: 0.9rem;
+  }
+
+  .match-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+  }
+
+  .match-scores {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .match-name {
+    font-weight: 500;
+    color: var(--text);
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .match-value {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    min-width: 1.5rem;
+    text-align: center;
+  }
+
+  .match-value[data-winner="true"] {
+    color: var(--clay);
+  }
+
+  .match-separator {
+    color: var(--gray);
+    font-weight: 400;
+  }
+</style>
