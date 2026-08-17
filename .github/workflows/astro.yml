@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Build Astro site
-        uses: withastro/action@v5
+        uses: withastro/action@v3
 
   deploy:
     needs: build
